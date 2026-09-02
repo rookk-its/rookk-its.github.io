@@ -124,6 +124,16 @@
         }
         .stat-val { font-size: 18px; font-weight: 700; color: var(--brand-dark); }
         .stat-lbl { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.3px; }
+        
+        .stat-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s;
+        }
+        .stat-link:hover .stat-val {
+            color: var(--brand-blue);
+        }
 
         .main-grid {
             display: grid;
@@ -357,8 +367,10 @@
             <div class="stat-lbl">Территория деятельности</div>
         </div>
         <div class="stat-item">
-            <div class="stat-val">ЭМЦ СК</div>
-            <div class="stat-lbl">Партнерство</div>
+            <a href="https://эмц-ск.рф/" target="_blank" rel="noopener noreferrer" class="stat-link" title="Перейти на официальный сайт ЭМЦ СК">
+                <div class="stat-val">ЭМЦ СК ↗</div>
+                <div class="stat-lbl">Партнерство</div>
+            </a>
         </div>
     </div>
 </div>
@@ -380,7 +392,7 @@
                 Школа выполняет функции консолидации инженерного опыта, разработки открытых практических пособий, унификации входного и операционного контроля, а также развития института наставничества в дорожно-транспортном хозяйстве региона.
             </p>
             <div class="callout">
-                <strong>Институциональное партнерство:</strong> Взаимодействие с Экспертно-методическим центром строительного контроля и управления строительством Красноярского края (ЭМЦ СК) осуществляется на основе равноправного партнерства в целях выработки прикладных методик и повышения надежности объектов инфраструктуры.
+                <strong>Институциональное партнерство:</strong> Взаимодействие с <a href="https://эмц-ск.рф/" target="_blank" rel="noopener noreferrer" style="color: var(--brand-blue); text-decoration: underline; font-weight: 600;">Экспертно-методическим центром строительного контроля и управления строительством Красноярского края (ЭМЦ СК)</a> осуществляется на основе равноправного партнерства в целях выработки прикладных методик и повышения надежности объектов инфраструктуры.
             </div>
         </section>
 
