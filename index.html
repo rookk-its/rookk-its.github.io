@@ -3,88 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РООКК «Школа ИнжТрансРазвитие»</title>
+    <title>РООКК «Школа ИнжТрансРазвитие» | Официальный портал</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; color: #1e293b; margin: 0; background: #f1f5f9; }
-        header { background: #0f172a; color: white; padding: 45px 20px; text-align: center; border-bottom: 4px solid #2563eb; }
-        header h1 { margin: 0 0 12px; font-size: 26px; letter-spacing: -0.5px; }
-        header p { margin: 0 auto; font-size: 15px; color: #94a3b8; max-width: 800px; }
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .card { background: white; border-radius: 8px; padding: 25px 30px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
-        h2 { color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-top: 0; font-size: 20px; }
-        h3 { margin: 10px 0 6px; font-size: 17px; color: #1e293b; }
-        .btn { display: inline-block; background: #2563eb; color: white; padding: 9px 16px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; margin-top: 8px; }
-        .btn:hover { background: #1d4ed8; }
-        .tag { background: #e0f2fe; color: #0284c7; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .item { padding: 15px 0; border-bottom: 1px solid #f1f5f9; }
-        .item:last-child { border-bottom: none; }
-        ul { padding-left: 20px; margin: 10px 0; }
-        li { margin-bottom: 6px; }
-        footer { background: #0f172a; color: #64748b; padding: 30px 20px; font-size: 12px; text-align: center; line-height: 1.8; }
+        :root {
+            --primary: #0b1f3a;
+            --primary-light: #162e52;
+            --accent: #b45309;
+            --accent-soft: #fef3c7;
+            --slate: #334155;
+            --muted: #64748b;
+            --bg: #f8fafc;
+            --border: #cbd5e1;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--slate);
+            margin: 0;
+            background-color: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Government Bar */
+        .top-bar {
+            background: #06111f;
+            color: #94a3b8;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-bottom: 1px solid #1e293b;
+        }
+        .top-bar-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            border-bottom: 3px solid var(--accent);
+        }
+        .header-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+        .emblem-placeholder {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: rgba(255,255,255,0.05);
+            color: #f1f5f9;
+        }
+        .header-titles h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+        }
+        .header-titles p {
+            margin: 6px 0 0;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .nav-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            gap: 25px;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--slate);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 14px 0;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1140px;
+            margin: 35px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Content Blocks */
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 28px;
+            margin-bottom: 28px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        .status-badge {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid #fde68a;
+            padding: 2px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        /* Items / Cards */
+        .item-row {
+            padding: 18px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .item-row:last-child { border-bottom: none; }
+        .item-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .item-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0 0 6px;
+        }
+        .item-desc {
+            margin: 0 0 12px;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        /* Buttons */
+        .btn-doc {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+        .btn-doc:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        /* Side Rail Widgets */
+        .widget {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .widget-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+        .official-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+        }
+        .official-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .official-list li:last-child { border-bottom: none; }
+        .official-list span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .legal-callout {
+            background: #f8fafc;
+            border-left: 3px solid var(--primary);
+            padding: 12px 14px;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1727;
+            color: #94a3b8;
+            font-size: 12px;
+            padding: 40px 20px 30px;
+            border-top: 1px solid #1e293b;
+        }
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        .footer-legal h4 {
+            color: #ffffff;
+            margin: 0 0 10px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-legal p {
+            margin: 0 0 10px;
+            line-height: 1.7;
+        }
+        .footer-bottom {
+            max-width: 1140px;
+            margin: 25px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        @media (max-width: 850px) {
+            .container { grid-template-columns: 1fr; }
+            .header-container { grid-template-columns: 1fr; text-align: center; }
+            .emblem-placeholder { margin: 0 auto; }
+            .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+        }
     </style>
 </head>
 <body>
 
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <div>Региональное профессиональное объединение граждан • Красноярский край</div>
+        <div>Федеральный закон № 82-ФЗ</div>
+    </div>
+</div>
+
 <header>
-    <h1>РООКК «Школа ИнжТрансРазвитие»</h1>
-    <p>Региональное общественное объединение Красноярского края «Инженерно-практическая школа транспортного строительства»</p>
+    <div class="header-container">
+        <div class="emblem-placeholder">⚖</div>
+        <div class="header-titles">
+            <h1>Инженерно-практическая школа транспортного строительства</h1>
+            <p>Региональное общественное объединение Красноярского края (РООКК «Школа ИнжТрансРазвитие»)</p>
+        </div>
+    </div>
 </header>
+
+<nav>
+    <div class="nav-container">
+        <a href="#about" class="active">О Школе</a>
+        <a href="#digital">Цифровой чемодан</a>
+        <a href="#science">Наука и препринты</a>
+        <a href="#practice">Методический фонд</a>
+        <a href="#membership">Реестр и членство</a>
+    </div>
+</nav>
 
 <div class="container">
 
-    <div class="card">
-        <h2>Об объединении</h2>
-        <p>Инициатива направлена на консолидацию инженерного сообщества Красноярского края, развитие практических компетенций, обмен опытом «на линии» и наставничество в сфере транспортного строительства[cite: 1].</p>
-        <p>Объединение создано решением Учредительного собрания (протокол № 11-05-УП от 11.05.2026 г.) и осуществляет деятельность без образования юридического лица в соответствии со ст. 3, 27 Федерального закона № 82-ФЗ[cite: 1]. Сотрудничество с Экспертно-методическим центром строительного контроля и управления строительством Красноярского края (ЭМЦ СК) строится на основе равноправного партнерства[cite: 1].</p>
-        <p><strong>Руководящие органы объединения:</strong></p>
-        <ul>
-            <li>Председатель Объединения / Руководитель Школы: Кобец С.О.[cite: 1]</li>
-            <li>Директор Школы: Коннов И.А.[cite: 1]</li>
-            <li>Секретарь Координационного совета: Туников М.В.[cite: 1]</li>
-        </ul>
-    </div>
+    <!-- Основной столбец -->
+    <main>
 
-    <div class="card">
-        <h2>Цифровой инструментарий и автоматизация</h2>
-        <p>Бесплатные модули, макросы и шаблоны для снижения трудоемкости подготовки инженерно-технической документации:</p>
-        
-        <div class="item">
-            <span class="tag">Excel / ГОСТ</span>
-            <h3>Калькулятор статистической обработки коэффициентов уплотнения</h3>
-            <p style="margin: 0; color: #64748b; font-size: 14px;">Автоматизированный расчет статистической выборки, средних значений и отклонений плотности по захваткам.</p>
-            <a href="calc_density.xlsx" class="btn">Скачать шаблон (.xlsx)</a>
+        <!-- Блок Об объединении -->
+        <section class="section-box" id="about">
+            <div class="section-header">
+                <h2>Институциональный статус</h2>
+                <span class="status-badge">Без юрлица</span>
+            </div>
+            <p style="font-size: 14px; margin-top: 0;">
+                Региональное общественное объединение Красноярского края «Инженерно-практическая школа транспортного строительства» учреждено 11 мая 2026 г. (Протокол № 11-05-УП) на основании ст. 3, 27 Федерального закона № 82-ФЗ «Об общественных объединениях»[cite: 1].
+            </p>
+            <p style="font-size: 14px;">
+                Деятельность Школы направлена на профессиональную консолидацию инженерного состава, обобщение практического опыта дорожного и мостового строительства Сибирского региона, разработку открытых прикладных инструментов и развитие института отраслевого наставничества[cite: 1].
+            </p>
+            <div class="legal-callout">
+                <strong>Нормативное взаимодействие:</strong> Взаимодействие с Экспертно-методическим центром строительного контроля и управления строительством Красноярского края (ЭМЦ СК) осуществляется на принципах равноправного партнерства в целях совершенствования системы строительного контроля и повышения технологической дисциплины[cite: 1].
+            </div>
+        </section>
+
+        <!-- Цифровые инструменты -->
+        <section class="section-box" id="digital">
+            <div class="section-header">
+                <h2>Цифровой чемодан инженера</h2>
+                <span class="status-badge">Открытый фонд</span>
+            </div>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 0;">
+                Прикладные алгоритмы, макросы и верифицированные расчетные формы для автоматизации инженерных расчетов и отчетности:
+            </p>
+
+            <div class="item-row">
+                <div class="item-meta">
+                    <span>Расчетный модуль</span> • <span>Стандарт: ГОСТ 22733 / СП 34.13330</span>
+                </div>
+                <div class="item-title">Модуль статистической обработки коэффициентов уплотнения (Excel)</div>
+                <div class="item-desc">
+                    Автоматизированная обработка выборки полевых измерений плотности земляного полотна и слоев оснований дорожных одежд с расчетом доверительных интервалов и формированием ведомости.
+                </div>
+                <a href="calc_density.xlsx" class="btn-doc">📥 Скачать расчетную форму (.xlsx)</a>
+            </div>
+
+            <div class="item-row">
+                <div class="item-meta">
+                    <span>Документооборот</span> • <span>Линейные объекты</span>
+                </div>
+                <div class="item-title">Сквозной реестр исполнительной документации стройконтроля</div>
+                <div class="item-desc">
+                    Структурированный матричный классификатор для учета и пакетного контроля передачи актов освидетельствования скрытых работ (АОСР) и лабораторных протоколов по пикетам и конструктивам.
+                </div>
+                <a href="reestr_id.xlsx" class="btn-doc">📥 Скачать структуру реестра (.xlsx)</a>
+            </div>
+        </section>
+
+        <!-- Наука и препринты -->
+        <section class="section-box" id="science">
+            <div class="section-header">
+                <h2>Научно-практические труды и препринты</h2>
+                <span class="status-badge">Исследования</span>
+            </div>
+
+            <div class="item-row">
+                <div class="item-meta">
+                    <span>Научная статья</span> • <span>Транспортная инфраструктура</span> • <span>2026 г.</span>
+                </div>
+                <div class="item-title">Управление рисками публичного заказчика при строительстве объектов транспортной инфраструктуры</div>
+                <div class="item-desc">
+                    <strong>Автор:</strong> Кобец С.О.<br>
+                    Комплексное исследование правовых, контрактных и технологических рисков заказчика. Практические механизмы минимизации дефектов на этапах входного, операционного и приемочного контроля.
+                </div>
+                <a href="statya_riski_2026.pdf" class="btn-doc">📄 Изучить текст статьи (PDF)</a>
+            </div>
+        </section>
+
+        <!-- Членство -->
+        <section class="section-box" id="membership">
+            <div class="section-header">
+                <h2>Порядок вступления в Объединение</h2>
+                <span class="status-badge">Регламент</span>
+            </div>
+            <p style="font-size: 14px; margin-top: 0;">
+                В соответствии с разделом 3 Устава, членство в Объединении является добровольным и фиксированным[cite: 1]. Прием осуществляется на основании личного заявления решением Координационного совета[cite: 1]. Участие бесплатное[cite: 1].
+            </p>
+            <div style="margin-top: 15px;">
+                <a href="zayavlenie_chlenstvo.docx" class="btn-doc">📋 Скачать типовое заявление на вступление (.docx)</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Правая колонка / Органы управления -->
+    <aside>
+
+        <div class="widget">
+            <h3 class="widget-title">Координационный совет</h3>
+            <ul class="official-list">
+                <li>
+                    <span>Председатель / Руководитель Школы</span>
+                    <strong>Кобец С.О.</strong>[cite: 1]
+                </li>
+                <li>
+                    <span>Директор Школы</span>
+                    <strong>Коннов И.А.</strong>[cite: 1]
+                </li>
+                <li>
+                    <span>Секретарь Совета</span>
+                    <strong>Туников М.В.</strong>[cite: 1]
+                </li>
+            </ul>
         </div>
 
-        <div class="item">
-            <span class="tag">Шаблон</span>
-            <h3>Реестр исполнительной документации линейного объекта</h3>
-            <p style="margin: 0; color: #64748b; font-size: 14px;">Структурированная форма сквозного контроля комплектности актов скрытых работ по конструктивам.</p>
-            <a href="reestr_id.xlsx" class="btn">Скачать форму (.xlsx)</a>
+        <div class="widget">
+            <h3 class="widget-title">Официальные документы</h3>
+            <ul class="official-list">
+                <li>
+                    <a href="ustav_rookk.pdf" style="text-decoration:none; color: var(--primary); font-weight:600; font-size:12px;">
+                        📄 Устав РООКК (протокол № 11-05-УП)[cite: 1]
+                    </a>
+                </li>
+                <li>
+                    <a href="polozhenie_ks.pdf" style="text-decoration:none; color: var(--primary); font-weight:600; font-size:12px;">
+                        📄 Положение о Координационном совете[cite: 1]
+                    </a>
+                </li>
+                <li>
+                    <a href="polozhenie_simvolika.pdf" style="text-decoration:none; color: var(--primary); font-weight:600; font-size:12px;">
+                        📄 Положение о символике[cite: 1]
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
 
-    <div class="card">
-        <h2>Научно-практические статьи и методики</h2>
-        <div class="item">
-            <span class="tag">Публикация</span>
-            <h3>Управление рисками публичного заказчика при строительстве объектов транспортной инфраструктуры</h3>
-            <p style="margin: 4px 0; font-size: 14px; color: #64748b;"><strong>Автор:</strong> Кобец С.О.</p>
-            <p style="margin: 4px 0 8px; font-size: 14px;">Анализ системных технических и нормативно-правовых рисков при реализации инфраструктурных проектов, методики превентивного контроля.</p>
-            <a href="statya_riski_2026.pdf" class="btn">Читать публикацию (PDF)</a>
+        <div class="widget" style="background: #f8fafc;">
+            <h3 class="widget-title">Обратная связь</h3>
+            <p style="font-size: 12px; margin: 0 0 10px; color: var(--slate);">
+                Направление материалов для включения в методический фонд и заявлений:
+            </p>
+            <div style="font-size: 13px; font-weight: 600; color: var(--primary);">
+                org@rookk-its.ru
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <h2>Вступление в объединение</h2>
-        <p>Членство в РООКК «Школа ИнжТрансРазвитие» является добровольным и бесплатным[cite: 1]. Приглашаются специалисты транспортного строительства, инженеры дорожного комплекса, преподаватели и студенты профильных специальностей[cite: 1].</p>
-        <a href="zayavlenie_chlenstvo.docx" class="btn">Скачать бланк заявления (.docx)</a>
-    </div>
+    </aside>
 
 </div>
 
 <footer>
-    <p>Региональное общественное объединение Красноярского края «Инженерно-практическая школа транспортного строительства» (РООКК «Школа ИнжТрансРазвитие»)[cite: 1].</p>
-    <p>Деятельность осуществляется в соответствии с ФЗ «Об общественных объединениях» № 82-ФЗ без образования юридического лица[cite: 1].<br>Все методические и прикладные материалы предоставляются в открытом доступе на безвозмездной основе[cite: 1].</p>
+    <div class="footer-inner">
+        <div class="footer-legal">
+            <h4>Правовой статус объединения</h4>
+            <p>
+                Региональное общественное объединение Красноярского края «Инженерно-практическая школа транспортного строительства» (РООКК «Школа ИнжТрансРазвитие») осуществляет свою деятельность в соответствии со статьями 3, 7, 27 Федерального закона от 19.05.1995 № 82-ФЗ «Об общественных объединениях» без приобретения прав юридического лица[cite: 1].
+            </p>
+            <p>
+                Использование наименования «школа» носит характер обозначения профессионального сообщества и формата практического обмена опытом, не связано с осуществлением лицензируемой образовательной деятельности и реализацией программ профессионального обучения (п. 1.11 Устава)[cite: 1].
+            </p>
+        </div>
+        <div>
+            <h4 style="color:#fff; margin:0 0 10px; font-size:13px; text-transform:uppercase;">Территория деятельности</h4>
+            <p style="line-height:1.7;">
+                Красноярский край[cite: 1]<br>
+                Все материалы и программные модули предоставляются открыто в некоммерческих инженерно-исследовательских целях[cite: 1].
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 РООКК «Школа ИнжТрансРазвитие». Официальный информационный портал профессионального сообщества.
+    </div>
 </footer>
 
 </body>
